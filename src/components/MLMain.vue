@@ -29,7 +29,7 @@
                 Clear
               </v-btn>
               <v-spacer></v-spacer>
-              <v-btn color="info" :large="$vuetify.breakpoint.smAndUp" @click="predict()">
+              <v-btn color="info" :large="$vuetify.breakpoint.smAndUp" @click="setupNeuralNetwork()">
                 <v-icon left>mdi-cloud-upload</v-icon> Predict
               </v-btn>
             </v-card-actions>
@@ -53,18 +53,21 @@
   export default {
     name: 'MLMain',
     data: () => ({
+      salesreps: ['Elliot', 'Stacy', 'Andre', 'Frank'],
+      neuralNetwork: null,
+      ranking: [],
       darkTheme: true,
       platformName: 'BIS3060',
-      scoreSelect: null,
-      ageSelect: null,
-      genderSelect: null,
-      genderItems: ['Male', 'Female'],
-      countrySelect: null,
+      scoreSelect: 69,
+      ageSelect: 46,
+      genderSelect: 'female',
+      genderItems: ['male', 'female'],
+      countrySelect: 'France',
       countryItems: ['Germany', 'France', 'England', 'Poland'],
-      ethnSelect: null,
+      ethnSelect: 'French',
       ethnItems: ['German', 'French', 'English', 'Polish'],
-      sizeSelect: null,
-      industrySelect: null, 
+      sizeSelect: 49,
+      industrySelect: 'Retail', 
       industryItems: ['Software', 'Retail', 'Marketing'],
 
     }),
@@ -84,6 +87,70 @@
         this.ethnSelect = null; 
         this.sizeSelect = null;
         this.industrySelect = null;
+      },
+      setupNeuralNetwork() {
+        let nnOptions = {
+          dataUrl: './data/trainingdata.csv',
+          inputs: ['salesRep','leadScore','customerAge','customerGender','customerCountry','customerEthnicity','companySize','companyIndustry'],
+          outputs: ['result'],
+          task: 'classification',
+          debug: true
+        };
+
+        this.neuralNetwork = window.ml5.neuralNetwork(nnOptions, this.modelReady)
+      }, 
+      modelReady() {
+        this.neuralNetwork.normalizeData();
+        this.neuralNetwork.train({ epochs: 50 }, this.whileTraining, this.finishedTraining);
+      }, 
+      whileTraining(epoch, logs) {
+        console.log(`Epoch: ${epoch} - loss: ${logs.loss.toFixed(2)}`);
+      },
+      finishedTraining() {
+        console.log('done!');
+        this.classify();
+      },
+      classify() {
+        this.ranking = []; 
+        this.salesreps.forEach(salesrep => {
+          let salesRep = salesrep; 
+          let leadScore = parseInt(this.scoreSelect);
+          let customerAge = parseInt(this.ageSelect);
+          let customerGender = this.genderSelect;
+          let customerCountry = this.countrySelect;
+          let customerEthnicity = this.ethnSelect;
+          let companySize = parseInt(this.sizeSelect);
+          let companyIndustry = this.industrySelect;
+          let inputs = [salesRep, leadScore, customerAge, customerGender, customerCountry, customerEthnicity, companySize, companyIndustry];
+          console.log(inputs); 
+          try {
+            this.neuralNetwork.classify(inputs, (err, results) => {
+                if (err != undefined) {
+                  console.log(err);
+                } else {
+                  console.log(salesrep + ": " + this.getProperty(results, 'success') + "%"); 
+                  console.log(results);
+                  this.updateRanking({name: salesrep, success: this.getProperty(results, 'success'), failure: this.getProperty(results, 'failure')});   
+                }
+            });
+          } catch (error) {
+            console.log('There was an error during the prediciton.');
+            console.log('Please try correcting the input values and try again.'); 
+            console.error(error);
+          }
+        }); 
+      },
+      getProperty(result, property) {
+        return result.find(obj => {
+          return obj.label === property
+        }).confidence; 
+      },
+      updateRanking(newEntry) {
+        //console.log('Ranking:'); 
+        console.log(this.ranking); 
+        this.ranking.push(newEntry); 
+        this.ranking.sort((a, b) => (a.success < b.success) ? 1 : -1); 
+        //select('#result').html(`Ideal sales rep: ${ranking[0].name} with ${ranking[0].success * 100}% chance to succeed.`);
       },
     },
   }
