@@ -57,14 +57,14 @@
     name: 'MLMain',
     data: () => ({
       isSetup: false,
-      salesreps: ['Elliot', 'Stacy', 'Andre', 'Frank'],
+      salesreps: ['Max', 'Erika', 'Andre', 'Frank'],
       neuralNetwork: null,
       ranking: [],
       platformName: 'BIS3060',
       scoreSelect: 69,
       ageSelect: 46,
       genderSelect: 'female',
-      genderItems: ['male', 'female'],
+      genderItems: ['male', 'female', 'divers'],
       countrySelect: 'France',
       countryItems: ['Germany', 'France', 'England', 'Poland'],
       ethnSelect: 'French',
@@ -104,7 +104,7 @@
       }, 
       modelReady() {
         this.neuralNetwork.normalizeData();
-        this.neuralNetwork.train({ epochs: 50 }, this.whileTraining, this.finishedTraining);
+        this.neuralNetwork.train({ epochs: 250 }, this.whileTraining, this.finishedTraining);
       }, 
       whileTraining(epoch, logs) {
         console.log(`Epoch: ${epoch} - loss: ${logs.loss.toFixed(2)}`);
@@ -116,7 +116,7 @@
       classify() {
         this.ranking = []; 
         this.salesreps.forEach(salesrep => {
-          let salesRep = salesrep; 
+          let salesRep = salesrep;
           let leadScore = parseInt(this.scoreSelect);
           let customerAge = parseInt(this.ageSelect);
           let customerGender = this.genderSelect;
@@ -131,8 +131,6 @@
                 if (err != undefined) {
                   console.log(err);
                 } else {
-                  console.log(salesrep + ": " + this.getProperty(results, 'success') + "%"); 
-                  console.log(results);
                   this.updateRanking({name: salesrep, success: this.getProperty(results, 'success'), failure: this.getProperty(results, 'failure')});   
                 }
             });
@@ -149,11 +147,18 @@
         }).confidence; 
       },
       updateRanking(newEntry) {
-        //console.log('Ranking:'); 
-        console.log(this.ranking); 
+        console.log('Update ranking...'); 
         this.ranking.push(newEntry); 
         this.ranking.sort((a, b) => (a.success < b.success) ? 1 : -1); 
-        //select('#result').html(`Ideal sales rep: ${ranking[0].name} with ${ranking[0].success * 100}% chance to succeed.`);
+        if(this.ranking.length == this.salesreps.length) {
+          console.log('Finished ranking: ');
+          this.ranking.forEach(rank => {
+            //console.log(rank); 
+            console.log(rank.name + ' has a ' + rank.success * 100 + '% chance to succeed.');
+          });
+          console.log(this.ranking); 
+        }
+        //open dialog
       },
     },
     mounted() {

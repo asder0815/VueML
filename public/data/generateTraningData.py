@@ -3,12 +3,12 @@ import random
  
 class Options: 
     reultModifierMultiplier = 15
-    ageThreshold = 5
-    sizeThreshold = 5
-    genders = ['male', 'female']
+    ageThreshold = 10
+    sizeThreshold = 15
+    genders = ['male', 'female', 'divers']
     countries = ['Germany', 'France', 'Poland', 'England']
     ethnicities = ['German', 'French', 'Polish', 'Russian', 'English', 'Arab']
-    industries = ['Software', 'Marketing', 'Retail']
+    industries = ['Software', 'Marketing', 'Retail', 'Automotive', 'Machines', 'Fashion', 'Architecture']
     results = ['success', 'failure']
 
 class SalesRep:
@@ -63,10 +63,10 @@ class SalesRep:
         return [salesRep,leadScore,customerAge,customerGender,customerCountry,customerEthnicity,companySize,companyIndustry,result]
 
 salesreps = [
-    SalesRep('Elliot', 30, 'male', 'Germany', 'German', 50, 'Software'),
-    SalesRep('Stacy', 26, 'female', 'France', 'French', 20, 'Marketing'),
+    SalesRep('Max', 30, 'male', 'Germany', 'German', 50, 'Software'),
+    SalesRep('Erika', 26, 'female', 'France', 'French', 20, 'Marketing'),
     SalesRep('Frank', 26, 'male', 'England', 'English', 250, 'Retail'),
-    SalesRep('Andre', 26, 'male', 'Germany', 'German', 100, 'Software')
+    SalesRep('Andre', 26, 'male', 'Germany', 'German', 100, 'Automotive')
 ]
 
 header = ['salesRep','leadScore','customerAge','customerGender','customerCountry','customerEthnicity','companySize','companyIndustry','result']
@@ -74,7 +74,7 @@ rows = []
 
 for rep in salesreps: 
     x = 0
-    for x in range (200): 
+    for x in range (30): 
         rows.append(rep.generateSale())
 
 with open('public/data/trainingdata.csv', 'w', newline='', encoding='UTF-8') as f:
