@@ -1,5 +1,7 @@
 # vueml
 
+A project implementing machine learning with ml5 within a vue app. 
+
 ## Project setup
 ```
 yarn install
