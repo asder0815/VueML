@@ -7,17 +7,17 @@ class Options:
     sizeThreshold = 15
     genders = ['male', 'female', 'diverse']
     countries = ['Germany', 'France', 'Poland', 'England']
-    ethnicities = ['German', 'French', 'Polish', 'Russian', 'English', 'Arab']
+    languages = ['German', 'French', 'Polish', 'Russian', 'English']
     industries = ['Software', 'Marketing', 'Retail', 'Automotive', 'Machines', 'Fashion', 'Architecture']
     results = ['success', 'failure']
 
 class SalesRep:
-    def __init__(self, name, preferredAge, preferredGender, preferredCountry, preferredEthnicity, preferredSize, preferredIndustry): 
+    def __init__(self, name, preferredAge, preferredGender, preferredCountry, preferredLanguage, preferredSize, preferredIndustry): 
         self.name = name
         self.preferredAge = preferredAge
         self.preferredGender = preferredGender
         self.preferredCountry = preferredCountry, 
-        self.preferredEthnicity = preferredEthnicity
+        self.preferredLanguage = preferredLanguage
         self.preferredSize = preferredSize
         self.preferredIndustry = preferredIndustry
 
@@ -27,7 +27,7 @@ class SalesRep:
         customerAge = random.randint(29, 76)
         customerGender = random.choice(Options.genders)
         customerCountry = random.choice(Options.countries)
-        customerEthnicity = random.choice(Options.ethnicities)
+        customerLanguage = random.choice(Options.languages)
         companySize = random.randint(3, 100)
         companyIndustry = random.choice(Options.industries)
         result = ''
@@ -44,7 +44,7 @@ class SalesRep:
             resultModifier = resultModifier + 1
         else:
             resultModifier = resultModifier - 1
-        if self.preferredEthnicity == customerEthnicity:
+        if self.preferredLanguage == customerLanguage:
             resultModifier = resultModifier + 1
         else:
             resultModifier = resultModifier - 1
@@ -60,7 +60,7 @@ class SalesRep:
             result = 'success'
         else: 
             result = 'failure'
-        return [salesRep,leadScore,customerAge,customerGender,customerCountry,customerEthnicity,companySize,companyIndustry,result]
+        return [salesRep,leadScore,customerAge,customerGender,customerCountry,customerLanguage,companySize,companyIndustry,result]
 
 salesreps = [
     SalesRep('Max', 30, 'male', 'Germany', 'German', 50, 'Software'),
@@ -69,12 +69,12 @@ salesreps = [
     SalesRep('Andre', 26, 'male', 'Germany', 'German', 100, 'Automotive')
 ]
 
-header = ['salesRep','leadScore','customerAge','customerGender','customerCountry','customerEthnicity','companySize','companyIndustry','result']
+header = ['salesRep','leadScore','customerAge','customerGender','customerCountry','customerLanguage','companySize','companyIndustry','result']
 rows = []
 
 for rep in salesreps: 
     x = 0
-    for x in range (30): 
+    for x in range (100): 
         rows.append(rep.generateSale())
 
 with open('public/data/trainingdata.csv', 'w', newline='', encoding='UTF-8') as f:

@@ -18,7 +18,7 @@
                 <v-text-field v-model="ageSelect" type="number" :rules="[v => !!v || 'Age is required']" label="Age" outlined required/>
                 <v-select v-model="genderSelect" :items="genderItems" :rules="[v => !!v || 'Gender is required']" label="Gender" outlined required></v-select>
                 <v-select v-model="countrySelect" :items="countryItems" :rules="[v => !!v || 'Country is required']" label="Country" outlined required></v-select>
-                <v-select v-model="ethnSelect" :items="ethnItems" :rules="[v => !!v || 'Ethnicity is required']" label="Ethnicity" outlined required></v-select>
+                <v-select v-model="languageSelect" :items="languageItems" :rules="[v => !!v || 'Language is required']" label="Language" outlined required></v-select>
                 <v-text-field v-model="sizeSelect" type="number" :rules="[v => !!v || 'Company Size is required']" label="Company Size" outlined required/>
                 <v-select v-model="industrySelect" :items="industryItems" :rules="[v => !!v || 'Industry is required']" label="Industry" outlined required></v-select>
               </v-form>
@@ -85,8 +85,8 @@
       genderItems: ['male', 'female', 'diverse'],
       countrySelect: null,
       countryItems: ['Germany', 'France', 'Poland', 'England'],
-      ethnSelect: null,
-      ethnItems: ['German', 'French', 'Polish', 'Russian', 'English', 'Arab'],
+      languageSelect: null,
+      languageItems: ['German', 'French', 'Polish', 'Russian', 'English'],
       sizeSelect: null,
       industrySelect: null, 
       industryItems: ['Software', 'Marketing', 'Retail', 'Automotive', 'Machines', 'Fashion', 'Architecture'],
@@ -122,14 +122,14 @@
         this.ageSelect = null; 
         this.genderSelect = null;
         this.countrySelect = null; 
-        this.ethnSelect = null; 
+        this.languageSelect = null; 
         this.sizeSelect = null;
         this.industrySelect = null;
       },
       setupNeuralNetwork() {
         let nnOptions = {
           dataUrl: './data/trainingdata.csv',
-          inputs: ['salesRep','leadScore','customerAge','customerGender','customerCountry','customerEthnicity','companySize','companyIndustry'],
+          inputs: ['salesRep','leadScore','customerAge','customerGender','customerCountry','customerLanguage','companySize','companyIndustry'],
           outputs: ['result'],
           task: 'classification',
           debug: false
@@ -160,10 +160,10 @@
           let customerAge = parseInt(this.ageSelect);
           let customerGender = this.genderSelect;
           let customerCountry = this.countrySelect;
-          let customerEthnicity = this.ethnSelect;
+          let customerLanguage = this.languageSelect;
           let companySize = parseInt(this.sizeSelect);
           let companyIndustry = this.industrySelect;
-          let inputs = [salesRep, leadScore, customerAge, customerGender, customerCountry, customerEthnicity, companySize, companyIndustry];
+          let inputs = [salesRep, leadScore, customerAge, customerGender, customerCountry, customerLanguage, companySize, companyIndustry];
           console.log(inputs); 
           try {
             this.neuralNetwork.classify(inputs, (err, results) => {
@@ -218,7 +218,7 @@
           this.ageSelect != null &&
           this.genderSelect != null &&
           this.countrySelect != null &&
-          this.ethnSelect != null &&
+          this.languageSelect != null &&
           this.sizeSelect != null &&
           this.industrySelect != null
         ); 
