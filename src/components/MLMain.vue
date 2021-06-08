@@ -45,7 +45,7 @@
               |
               <a href="#">Terms of Service</a>
             </p> -->
-            <p class="caption my-3">Powered by <a href="#">ml5.js</a> and <a href="#">Vue.js</a></p>
+            <p class="caption my-3">Powered by <a href="https://ml5js.org/">ml5.js</a> and <a href="https://vuejs.org/">Vue.js</a></p>
           </v-layout>
         </v-flex>
       </v-layout>
@@ -209,10 +209,6 @@
           this.chartOptions = newOptions;
           console.log(this.series); 
           console.log(this.chartOptions); 
-          /* this.$refs.resultChart.updateOptions({
-            series: newData,
-            options: newOptions
-          }) */
           //open dialog
           this.resultDialog = true;
         }
