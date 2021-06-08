@@ -14,12 +14,12 @@
             <v-card-text>
               <p>Enter the lead data:</p>
               <v-form>  
-                <v-text-field v-model="scoreSelect" single-line type="number" :rules="[v => !!v || 'Score is required']" label="Lead Score" outlined required/>
-                <v-text-field v-model="ageSelect" single-line type="number" :rules="[v => !!v || 'Age is required']" label="Age" outlined required/>
+                <v-text-field v-model="scoreSelect" type="number" :rules="[v => !!v || 'Score is required']" label="Lead Score" outlined required/>
+                <v-text-field v-model="ageSelect" type="number" :rules="[v => !!v || 'Age is required']" label="Age" outlined required/>
                 <v-select v-model="genderSelect" :items="genderItems" :rules="[v => !!v || 'Gender is required']" label="Gender" outlined required></v-select>
                 <v-select v-model="countrySelect" :items="countryItems" :rules="[v => !!v || 'Country is required']" label="Country" outlined required></v-select>
                 <v-select v-model="ethnSelect" :items="ethnItems" :rules="[v => !!v || 'Ethnicity is required']" label="Ethnicity" outlined required></v-select>
-                <v-text-field v-model="sizeSelect" single-line type="number" :rules="[v => !!v || 'Company Size is required']" label="Company Size" outlined required/>
+                <v-text-field v-model="sizeSelect" type="number" :rules="[v => !!v || 'Company Size is required']" label="Company Size" outlined required/>
                 <v-select v-model="industrySelect" :items="industryItems" :rules="[v => !!v || 'Industry is required']" label="Industry" outlined required></v-select>
               </v-form>
             </v-card-text>
@@ -40,11 +40,6 @@
         </v-flex>
         <v-flex sm12 md6 offset-md3>
           <v-layout align-end justify-end>
-            <!-- <p class="caption my-3">
-              <a href="#">Privacy Policy</a>
-              |
-              <a href="#">Terms of Service</a>
-            </p> -->
             <p class="caption my-3">Powered by <a href="https://ml5js.org/">ml5.js</a> and <a href="https://vuejs.org/">Vue.js</a></p>
           </v-layout>
         </v-flex>
@@ -83,17 +78,17 @@
       salesreps: ['Max', 'Erika', 'Andre', 'Frank'],
       neuralNetwork: null,
       ranking: [],
-      platformName: 'BIS3060',
-      scoreSelect: 69,
-      ageSelect: 46,
-      genderSelect: 'female',
-      genderItems: ['male', 'female', 'divers'],
-      countrySelect: 'France',
+      platformName: 'Predict the best sales rep for your customers  ',
+      scoreSelect: null,
+      ageSelect: null,
+      genderSelect: null,
+      genderItems: ['male', 'female', 'diverse'],
+      countrySelect: null,
       countryItems: ['Germany', 'France', 'Poland', 'England'],
-      ethnSelect: 'French',
+      ethnSelect: null,
       ethnItems: ['German', 'French', 'Polish', 'Russian', 'English', 'Arab'],
-      sizeSelect: 49,
-      industrySelect: 'Retail', 
+      sizeSelect: null,
+      industrySelect: null, 
       industryItems: ['Software', 'Marketing', 'Retail', 'Automotive', 'Machines', 'Fashion', 'Architecture'],
       series: [ { data: [] } ],
       chartOptions: {
@@ -137,14 +132,14 @@
           inputs: ['salesRep','leadScore','customerAge','customerGender','customerCountry','customerEthnicity','companySize','companyIndustry'],
           outputs: ['result'],
           task: 'classification',
-          debug: true
+          debug: false
         };
 
         this.neuralNetwork = window.ml5.neuralNetwork(nnOptions, this.modelReady)
       }, 
       modelReady() {
         this.neuralNetwork.normalizeData();
-        this.neuralNetwork.train({ epochs: 50 }, this.whileTraining, this.finishedTraining);
+        this.neuralNetwork.train({ epochs: 1 }, this.whileTraining, this.finishedTraining);
       }, 
       whileTraining(epoch, logs) {
         console.log(`Epoch: ${epoch} - loss: ${logs.loss.toFixed(2)}`);
@@ -154,6 +149,10 @@
         this.isSetup = true; 
       },
       classify() {
+        if(!this.isInputValid()) {
+          alert('Please fill out all the fields!'); 
+          return; 
+        }
         this.ranking = []; 
         this.salesreps.forEach(salesrep => {
           let salesRep = salesrep;
@@ -213,6 +212,17 @@
           this.resultDialog = true;
         }
       },
+      isInputValid() {
+        return (
+          this.scoreSelect != null &&
+          this.ageSelect != null &&
+          this.genderSelect != null &&
+          this.countrySelect != null &&
+          this.ethnSelect != null &&
+          this.sizeSelect != null &&
+          this.industrySelect != null
+        ); 
+      }
     },
     mounted() {
       this.setupNeuralNetwork();

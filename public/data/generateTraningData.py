@@ -5,7 +5,7 @@ class Options:
     reultModifierMultiplier = 15
     ageThreshold = 10
     sizeThreshold = 15
-    genders = ['male', 'female', 'divers']
+    genders = ['male', 'female', 'diverse']
     countries = ['Germany', 'France', 'Poland', 'England']
     ethnicities = ['German', 'French', 'Polish', 'Russian', 'English', 'Arab']
     industries = ['Software', 'Marketing', 'Retail', 'Automotive', 'Machines', 'Fashion', 'Architecture']
