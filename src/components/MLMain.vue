@@ -29,8 +29,11 @@
                 Clear
               </v-btn>
               <v-spacer></v-spacer>
-              <v-btn color="info" :large="$vuetify.breakpoint.smAndUp" @click="setupNeuralNetwork()">
+              <v-btn v-if="isSetup" color="info" :large="$vuetify.breakpoint.smAndUp" @click="classify()">
                 <v-icon left>mdi-cloud-upload</v-icon> Predict
+              </v-btn>
+              <v-btn v-else color="info" :large="$vuetify.breakpoint.smAndUp" disabled>
+                Please wait...
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -53,10 +56,10 @@
   export default {
     name: 'MLMain',
     data: () => ({
+      isSetup: false,
       salesreps: ['Elliot', 'Stacy', 'Andre', 'Frank'],
       neuralNetwork: null,
       ranking: [],
-      darkTheme: true,
       platformName: 'BIS3060',
       scoreSelect: 69,
       ageSelect: 46,
@@ -107,8 +110,8 @@
         console.log(`Epoch: ${epoch} - loss: ${logs.loss.toFixed(2)}`);
       },
       finishedTraining() {
-        console.log('done!');
-        this.classify();
+        console.log('Training completed!');
+        this.isSetup = true; 
       },
       classify() {
         this.ranking = []; 
@@ -153,5 +156,8 @@
         //select('#result').html(`Ideal sales rep: ${ranking[0].name} with ${ranking[0].success * 100}% chance to succeed.`);
       },
     },
+    mounted() {
+      this.setupNeuralNetwork();
+    }
   }
 </script>

@@ -77,7 +77,7 @@ for rep in salesreps:
     for x in range (200): 
         rows.append(rep.generateSale())
 
-with open('data/trainingdata.csv', 'w', newline='', encoding='UTF-8') as f:
+with open('public/data/trainingdata.csv', 'w', newline='', encoding='UTF-8') as f:
     writer = csv.writer(f)
     writer.writerow(header)
     for row in rows: 
