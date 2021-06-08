@@ -39,24 +39,47 @@
           </v-card>
         </v-flex>
         <v-flex sm12 md6 offset-md3>
-          <v-layout align-center justify-space-between>
-            <p class="caption my-3">
+          <v-layout align-end justify-end>
+            <!-- <p class="caption my-3">
               <a href="#">Privacy Policy</a>
               |
               <a href="#">Terms of Service</a>
-            </p>
-            <p class="caption my-3">Powered by <a href="#">ml5.js</a></p>
+            </p> -->
+            <p class="caption my-3">Powered by <a href="#">ml5.js</a> and <a href="#">Vue.js</a></p>
           </v-layout>
         </v-flex>
       </v-layout>
+      <v-dialog v-model="resultDialog" width="600">
+        <v-card>
+          <v-card-title class="text-h5 grey lighten-3" >
+            Prediction results
+          </v-card-title>
+          <div id="chart">
+            <apexchart type="bar" height="400" :options="chartOptions" :series="series" ref="resultChart"></apexchart>
+          </div>
+          <v-divider></v-divider>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" text @click="resultDialog = false">
+              Close
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-container>
 </template>
 
 <script>
+  import VueApexCharts from 'vue-apexcharts'
   export default {
     name: 'MLMain',
+    components: {
+      'apexchart': 
+      VueApexCharts,
+    },
     data: () => ({
       isSetup: false,
+      resultDialog: false,
       salesreps: ['Max', 'Erika', 'Andre', 'Frank'],
       neuralNetwork: null,
       ranking: [],
@@ -66,13 +89,31 @@
       genderSelect: 'female',
       genderItems: ['male', 'female', 'divers'],
       countrySelect: 'France',
-      countryItems: ['Germany', 'France', 'England', 'Poland'],
+      countryItems: ['Germany', 'France', 'Poland', 'England'],
       ethnSelect: 'French',
-      ethnItems: ['German', 'French', 'English', 'Polish'],
+      ethnItems: ['German', 'French', 'Polish', 'Russian', 'English', 'Arab'],
       sizeSelect: 49,
       industrySelect: 'Retail', 
-      industryItems: ['Software', 'Retail', 'Marketing'],
-
+      industryItems: ['Software', 'Marketing', 'Retail', 'Automotive', 'Machines', 'Fashion', 'Architecture'],
+      series: [ { data: [] } ],
+      chartOptions: {
+        chart: {
+          type: 'bar',
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 2,
+            horizontal: true,
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        xaxis: {
+          categories: [],
+        }
+      },
     }),
     computed: {
     },
@@ -81,7 +122,6 @@
         console.log('Predicting results...'); 
       },
       clear() {
-        //this.$v.$reset()
         console.log('Clearing input...'); 
         this.scoreSelect = null; 
         this.ageSelect = null; 
@@ -104,7 +144,7 @@
       }, 
       modelReady() {
         this.neuralNetwork.normalizeData();
-        this.neuralNetwork.train({ epochs: 250 }, this.whileTraining, this.finishedTraining);
+        this.neuralNetwork.train({ epochs: 50 }, this.whileTraining, this.finishedTraining);
       }, 
       whileTraining(epoch, logs) {
         console.log(`Epoch: ${epoch} - loss: ${logs.loss.toFixed(2)}`);
@@ -153,12 +193,29 @@
         if(this.ranking.length == this.salesreps.length) {
           console.log('Finished ranking: ');
           this.ranking.forEach(rank => {
-            //console.log(rank); 
             console.log(rank.name + ' has a ' + rank.success * 100 + '% chance to succeed.');
           });
           console.log(this.ranking); 
+          //setup chart
+          var newData = JSON.parse(JSON.stringify(this.series));
+          var newOptions = JSON.parse(JSON.stringify(this.chartOptions));
+          newData[0].data = []; 
+          newOptions.xaxis.categories = []; 
+          this.ranking.forEach(rank => {
+            newData[0].data.push(rank.success * 100); 
+            newOptions.xaxis.categories.push(rank.name); 
+          });
+          this.series = newData; 
+          this.chartOptions = newOptions;
+          console.log(this.series); 
+          console.log(this.chartOptions); 
+          /* this.$refs.resultChart.updateOptions({
+            series: newData,
+            options: newOptions
+          }) */
+          //open dialog
+          this.resultDialog = true;
         }
-        //open dialog
       },
     },
     mounted() {

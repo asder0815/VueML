@@ -14,7 +14,7 @@
   "resolved" "https://registry.nlark.com/@babel/compat-data/download/@babel/compat-data-7.14.4.tgz?cache=0&sync_timestamp=1622221249104&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Fcompat-data%2Fdownload%2F%40babel%2Fcompat-data-7.14.4.tgz"
   "version" "7.14.4"
 
-"@babel/core@^7.11.0":
+"@babel/core@*", "@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.11.0", "@babel/core@^7.12.0", "@babel/core@^7.13.0", "@babel/core@^7.4.0-0":
   "integrity" "sha1-U5XjBAXwd2Bn+9nPCITxW/t3Cjg="
   "resolved" "https://registry.nlark.com/@babel/core/download/@babel/core-7.14.3.tgz"
   "version" "7.14.3"
@@ -1036,15 +1036,15 @@
   "resolved" "https://registry.npmjs.org/@tensorflow-models/universal-sentence-encoder/-/universal-sentence-encoder-1.3.3.tgz"
   "version" "1.3.3"
 
-"@tensorflow/tfjs-converter@1.7.4":
+"@tensorflow/tfjs-converter@^1.2.9", "@tensorflow/tfjs-converter@^1.5.2", "@tensorflow/tfjs-converter@^1.6.1", "@tensorflow/tfjs-converter@^3.0.0-rc.1", "@tensorflow/tfjs-converter@^3.3.0", "@tensorflow/tfjs-converter@^3.6.0", "@tensorflow/tfjs-converter@~1.2.1", "@tensorflow/tfjs-converter@1.7.4":
   "integrity" "sha512-B/Ux9I3osI0CXoESGR0Xe5C6BsEfC04+g2xn5zVaW9KEuVEnGEgnuBQxgijRFzkqTwoyLv4ptAmjyIghVARX0Q=="
   "resolved" "https://registry.npmjs.org/@tensorflow/tfjs-converter/-/tfjs-converter-1.7.4.tgz"
   "version" "1.7.4"
 
-"@tensorflow/tfjs-core@1.7.0":
-  "integrity" "sha512-uwQdiklNjqBnHPeseOdG0sGxrI3+d6lybaKu2+ou3ajVeKdPEwpWbgqA6iHjq1iylnOGkgkbbnQ6r2lwkiIIHw=="
-  "resolved" "https://registry.npmjs.org/@tensorflow/tfjs-core/-/tfjs-core-1.7.0.tgz"
-  "version" "1.7.0"
+"@tensorflow/tfjs-core@^1.2.9", "@tensorflow/tfjs-core@^1.5.2", "@tensorflow/tfjs-core@^1.6.1", "@tensorflow/tfjs-core@^3.0.0-rc.1", "@tensorflow/tfjs-core@^3.3.0", "@tensorflow/tfjs-core@^3.6.0", "@tensorflow/tfjs-core@>= 1.0.0", "@tensorflow/tfjs-core@~1.2.1", "@tensorflow/tfjs-core@1.7.4":
+  "integrity" "sha512-3G4VKJ6nPs7iCt6gs3bjRj8chihKrYWenf63R0pm7D9MhlrVoX/tpN4LYVMGgBL7jHPxMLKdOkoAZJrn/J88HQ=="
+  "resolved" "https://registry.npmjs.org/@tensorflow/tfjs-core/-/tfjs-core-1.7.4.tgz"
+  "version" "1.7.4"
   dependencies:
     "@types/offscreencanvas" "~2019.3.0"
     "@types/seedrandom" "2.4.27"
@@ -1053,10 +1053,10 @@
     "node-fetch" "~2.1.2"
     "seedrandom" "2.4.3"
 
-"@tensorflow/tfjs-core@1.7.4":
-  "integrity" "sha512-3G4VKJ6nPs7iCt6gs3bjRj8chihKrYWenf63R0pm7D9MhlrVoX/tpN4LYVMGgBL7jHPxMLKdOkoAZJrn/J88HQ=="
-  "resolved" "https://registry.npmjs.org/@tensorflow/tfjs-core/-/tfjs-core-1.7.4.tgz"
-  "version" "1.7.4"
+"@tensorflow/tfjs-core@1.7.0":
+  "integrity" "sha512-uwQdiklNjqBnHPeseOdG0sGxrI3+d6lybaKu2+ou3ajVeKdPEwpWbgqA6iHjq1iylnOGkgkbbnQ6r2lwkiIIHw=="
+  "resolved" "https://registry.npmjs.org/@tensorflow/tfjs-core/-/tfjs-core-1.7.0.tgz"
+  "version" "1.7.0"
   dependencies:
     "@types/offscreencanvas" "~2019.3.0"
     "@types/seedrandom" "2.4.27"
@@ -1091,7 +1091,7 @@
     "vega-embed" "6.17.0"
     "vega-lite" "4.13.1"
 
-"@tensorflow/tfjs@^1.0.2", "@tensorflow/tfjs@^1.7.0":
+"@tensorflow/tfjs@^1.0.2", "@tensorflow/tfjs@^1.1.2", "@tensorflow/tfjs@^1.7.0":
   "integrity" "sha512-XWGwRQ/ECEoQacd74JY/dmbLdnMpwtq3H8tls45dQ+GJ553Advir1FDo/aQt0Yr6fTimQDeiOIG4Mcb5KduP/w=="
   "resolved" "https://registry.npmjs.org/@tensorflow/tfjs/-/tfjs-1.7.4.tgz"
   "version" "1.7.4"
@@ -1464,7 +1464,7 @@
   "resolved" "https://registry.nlark.com/@vue/cli-plugin-vuex/download/@vue/cli-plugin-vuex-4.5.13.tgz"
   "version" "4.5.13"
 
-"@vue/cli-service@~4.5.0":
+"@vue/cli-service@^3.0.0 || ^4.0.0-0", "@vue/cli-service@~4.5.0":
   "integrity" "sha1-oJ5oSoAWhLbiTlQUrTBlCXDuye0="
   "resolved" "https://registry.nlark.com/@vue/cli-service/download/@vue/cli-service-4.5.13.tgz"
   "version" "4.5.13"
@@ -1744,15 +1744,15 @@
   "resolved" "https://registry.nlark.com/acorn-walk/download/acorn-walk-7.2.0.tgz"
   "version" "7.2.0"
 
+"acorn@^6.0.0 || ^7.0.0 || ^8.0.0", "acorn@^7.1.1", "acorn@^7.4.0":
+  "integrity" "sha1-/q7SVZc9LndVW4PbwIhRpsY1IPo="
+  "resolved" "https://registry.nlark.com/acorn/download/acorn-7.4.1.tgz?cache=0&sync_timestamp=1622440249922&other_urls=https%3A%2F%2Fregistry.nlark.com%2Facorn%2Fdownload%2Facorn-7.4.1.tgz"
+  "version" "7.4.1"
+
 "acorn@^6.4.1":
   "integrity" "sha1-NYZv1xBSjpLeEM8GAWSY5H454eY="
   "resolved" "https://registry.nlark.com/acorn/download/acorn-6.4.2.tgz?cache=0&sync_timestamp=1622440249922&other_urls=https%3A%2F%2Fregistry.nlark.com%2Facorn%2Fdownload%2Facorn-6.4.2.tgz"
   "version" "6.4.2"
-
-"acorn@^7.1.1", "acorn@^7.4.0":
-  "integrity" "sha1-/q7SVZc9LndVW4PbwIhRpsY1IPo="
-  "resolved" "https://registry.nlark.com/acorn/download/acorn-7.4.1.tgz?cache=0&sync_timestamp=1622440249922&other_urls=https%3A%2F%2Fregistry.nlark.com%2Facorn%2Fdownload%2Facorn-7.4.1.tgz"
-  "version" "7.4.1"
 
 "address@^1.1.2":
   "integrity" "sha1-vxEWycdYxRt6kz0pa3LCIe2UKLY="
@@ -1769,7 +1769,7 @@
   "resolved" "https://registry.npm.taobao.org/ajv-keywords/download/ajv-keywords-3.5.2.tgz"
   "version" "3.5.2"
 
-"ajv@^6.1.0", "ajv@^6.10.0", "ajv@^6.10.2", "ajv@^6.12.3", "ajv@^6.12.4", "ajv@^6.12.5":
+"ajv@^6.1.0", "ajv@^6.10.0", "ajv@^6.10.2", "ajv@^6.12.3", "ajv@^6.12.4", "ajv@^6.12.5", "ajv@^6.9.1", "ajv@>=5.0.0":
   "integrity" "sha1-uvWmLoArB9l3A0WG+MO69a3ybfQ="
   "resolved" "https://registry.nlark.com/ajv/download/ajv-6.12.6.tgz"
   "version" "6.12.6"
@@ -1855,6 +1855,18 @@
   dependencies:
     "normalize-path" "^3.0.0"
     "picomatch" "^2.0.4"
+
+"apexcharts@^3.26.0":
+  "integrity" "sha512-2pfw3pxeWhI0ap5lfxyfGNGoGScfEwfc8XnTpbnzgRdr1AOH5JJN9hh3MvfwrC9TQQfJYC2TZc8P/q9qXUj1bQ=="
+  "resolved" "https://registry.npmjs.org/apexcharts/-/apexcharts-3.27.1.tgz"
+  "version" "3.27.1"
+  dependencies:
+    "svg.draggable.js" "^2.2.2"
+    "svg.easing.js" "^2.0.0"
+    "svg.filter.js" "^2.0.2"
+    "svg.pathmorphing.js" "^0.1.3"
+    "svg.resize.js" "^1.4.3"
+    "svg.select.js" "^3.0.1"
 
 "aproba@^1.1.1":
   "integrity" "sha1-aALmJk79GMeQobDVF/DyYnvyyUo="
@@ -2944,7 +2956,7 @@
   "resolved" "https://registry.npmjs.org/core-js/-/core-js-1.2.7.tgz"
   "version" "1.2.7"
 
-"core-js@^3.6.5":
+"core-js@^3", "core-js@^3.6.5":
   "integrity" "sha1-YjIrmMccwgGLAnlxppQZ4kJcKmw="
   "resolved" "https://registry.nlark.com/core-js/download/core-js-3.14.0.tgz"
   "version" "3.14.0"
@@ -3071,7 +3083,7 @@
     "hyphenate-style-name" "^1.0.2"
     "isobject" "^3.0.1"
 
-"css-loader@^3.5.3":
+"css-loader@*", "css-loader@^3.5.3":
   "integrity" "sha1-Lkssfm4tJ/jI8o9hv/zS5ske9kU="
   "resolved" "https://registry.nlark.com/css-loader/download/css-loader-3.6.0.tgz?cache=0&sync_timestamp=1621865043272&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcss-loader%2Fdownload%2Fcss-loader-3.6.0.tgz"
   "version" "3.6.0"
@@ -3868,7 +3880,7 @@
   "resolved" "https://registry.nlark.com/eslint-visitor-keys/download/eslint-visitor-keys-1.3.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Feslint-visitor-keys%2Fdownload%2Feslint-visitor-keys-1.3.0.tgz"
   "version" "1.3.0"
 
-"eslint@^6.7.2":
+"eslint@^5.0.0 || ^6.0.0", "eslint@^6.7.2", "eslint@>= 1.6.0 < 7.0.0", "eslint@>= 4.12.1", "eslint@>=1.6.0 <7.0.0", "eslint@>=5.0.0":
   "integrity" "sha1-YiYtZylzn5J1cjgkMC+yJ8jJP/s="
   "resolved" "https://registry.nlark.com/eslint/download/eslint-6.8.0.tgz?cache=0&sync_timestamp=1622846652119&other_urls=https%3A%2F%2Fregistry.nlark.com%2Feslint%2Fdownload%2Feslint-6.8.0.tgz"
   "version" "6.8.0"
@@ -4225,7 +4237,7 @@
   dependencies:
     "flat-cache" "^2.0.1"
 
-"file-loader@^4.2.0":
+"file-loader@*", "file-loader@^4.2.0":
   "integrity" "sha1-eA8ED3KbPRgBnyBgX3I+hEuKWK8="
   "resolved" "https://registry.npm.taobao.org/file-loader/download/file-loader-4.3.0.tgz?cache=0&sync_timestamp=1603816841545&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffile-loader%2Fdownload%2Ffile-loader-4.3.0.tgz"
   "version" "4.3.0"
@@ -4804,7 +4816,7 @@
   "resolved" "https://registry.npm.taobao.org/html-tags/download/html-tags-3.1.0.tgz"
   "version" "3.1.0"
 
-"html-webpack-plugin@^3.2.0":
+"html-webpack-plugin@^3.2.0", "html-webpack-plugin@>=2.26.0":
   "integrity" "sha1-sBq71yOsqqeze2r0SS69oD2d03s="
   "resolved" "https://registry.npm.taobao.org/html-webpack-plugin/download/html-webpack-plugin-3.2.0.tgz"
   "version" "3.2.0"
@@ -7687,7 +7699,7 @@
     "schema-utils" "^3.0.0"
     "semver" "^7.3.2"
 
-"sass@~1.32.0":
+"sass@^1.3.0", "sass@~1.32.0":
   "integrity" "sha1-jSnISeYlpBW85xYJx8+V4V907QA="
   "resolved" "https://registry.nlark.com/sass/download/sass-1.32.13.tgz"
   "version" "1.32.13"
@@ -7753,7 +7765,7 @@
     "ajv" "^6.12.5"
     "ajv-keywords" "^3.5.2"
 
-"seedrandom@2.4.3":
+"seedrandom@~2.4.3", "seedrandom@2.4.3":
   "integrity" "sha1-JDhQTa0zkXMUv/GKxNeU8W1qrsw="
   "resolved" "https://registry.npmjs.org/seedrandom/-/seedrandom-2.4.3.tgz"
   "version" "2.4.3"
@@ -8389,6 +8401,61 @@
   "resolved" "https://registry.npm.taobao.org/svg-tags/download/svg-tags-1.0.0.tgz"
   "version" "1.0.0"
 
+"svg.draggable.js@^2.2.2":
+  "integrity" "sha512-JzNHBc2fLQMzYCZ90KZHN2ohXL0BQJGQimK1kGk6AvSeibuKcIdDX9Kr0dT9+UJ5O8nYA0RB839Lhvk4CY4MZw=="
+  "resolved" "https://registry.npmjs.org/svg.draggable.js/-/svg.draggable.js-2.2.2.tgz"
+  "version" "2.2.2"
+  dependencies:
+    "svg.js" "^2.0.1"
+
+"svg.easing.js@^2.0.0":
+  "integrity" "sha1-iqmUawqOJ4V6XEChDrpAkeVpHxI="
+  "resolved" "https://registry.npmjs.org/svg.easing.js/-/svg.easing.js-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "svg.js" ">=2.3.x"
+
+"svg.filter.js@^2.0.2":
+  "integrity" "sha1-kQCOFROJ3ZIwd5/L5uLJo2LRwgM="
+  "resolved" "https://registry.npmjs.org/svg.filter.js/-/svg.filter.js-2.0.2.tgz"
+  "version" "2.0.2"
+  dependencies:
+    "svg.js" "^2.2.5"
+
+"svg.js@^2.0.1", "svg.js@^2.2.5", "svg.js@^2.4.0", "svg.js@^2.6.5", "svg.js@>=2.3.x":
+  "integrity" "sha512-ycbxpizEQktk3FYvn/8BH+6/EuWXg7ZpQREJvgacqn46gIddG24tNNe4Son6omdXCnSOaApnpZw6MPCBA1dODA=="
+  "resolved" "https://registry.npmjs.org/svg.js/-/svg.js-2.7.1.tgz"
+  "version" "2.7.1"
+
+"svg.pathmorphing.js@^0.1.3":
+  "integrity" "sha512-49HWI9X4XQR/JG1qXkSDV8xViuTLIWm/B/7YuQELV5KMOPtXjiwH4XPJvr/ghEDibmLQ9Oc22dpWpG0vUDDNww=="
+  "resolved" "https://registry.npmjs.org/svg.pathmorphing.js/-/svg.pathmorphing.js-0.1.3.tgz"
+  "version" "0.1.3"
+  dependencies:
+    "svg.js" "^2.4.0"
+
+"svg.resize.js@^1.4.3":
+  "integrity" "sha512-9k5sXJuPKp+mVzXNvxz7U0uC9oVMQrrf7cFsETznzUDDm0x8+77dtZkWdMfRlmbkEEYvUn9btKuZ3n41oNA+uw=="
+  "resolved" "https://registry.npmjs.org/svg.resize.js/-/svg.resize.js-1.4.3.tgz"
+  "version" "1.4.3"
+  dependencies:
+    "svg.js" "^2.6.5"
+    "svg.select.js" "^2.1.2"
+
+"svg.select.js@^2.1.2":
+  "integrity" "sha512-tH6ABEyJsAOVAhwcCjF8mw4crjXSI1aa7j2VQR8ZuJ37H2MBUbyeqYr5nEO7sSN3cy9AR9DUwNg0t/962HlDbQ=="
+  "resolved" "https://registry.npmjs.org/svg.select.js/-/svg.select.js-2.1.2.tgz"
+  "version" "2.1.2"
+  dependencies:
+    "svg.js" "^2.2.5"
+
+"svg.select.js@^3.0.1":
+  "integrity" "sha512-h5IS/hKkuVCbKSieR9uQCj9w+zLHoPh+ce19bBYyqF53g6mnPB8sAtIbe1s9dh2S2fCmYX2xel1Ln3PJBbK4kw=="
+  "resolved" "https://registry.npmjs.org/svg.select.js/-/svg.select.js-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "svg.js" "^2.6.5"
+
 "svgo@^1.0.0":
   "integrity" "sha1-ttxRHAYzRsnkFbgeQ0ARRbltQWc="
   "resolved" "https://registry.npm.taobao.org/svgo/download/svgo-1.3.2.tgz"
@@ -9016,7 +9083,7 @@
     "vega-scenegraph" "^4.9.2"
     "vega-util" "^1.15.2"
 
-"vega-lite@4.13.1":
+"vega-lite@*", "vega-lite@4.13.1":
   "integrity" "sha512-OHZSSqVLuikoZ3idz3jIRk0UCKtVU2Lq5gaD6cLNTnJjNetoHKKdfZ023LVj4+Y9yWPz5meb+EJUsfBAGfF4Vw=="
   "resolved" "https://registry.npmjs.org/vega-lite/-/vega-lite-4.13.1.tgz"
   "version" "4.13.1"
@@ -9222,7 +9289,7 @@
     "vega-statistics" "^1.7.9"
     "vega-util" "^1.15.2"
 
-"vega@5.20.0":
+"vega@*", "vega@^5.12.1", "vega@^5.13.0", "vega@5.20.0":
   "integrity" "sha512-L2hDaTH2gz9DFbu7l1B8fR637HzctViuosFCo/Db5aBe93fCJ/w/oJu+vQNfQELzfm9sntkS/+A4u+39xrDCNA=="
   "resolved" "https://registry.npmjs.org/vega/-/vega-5.20.0.tgz"
   "version" "5.20.0"
@@ -9273,6 +9340,11 @@
   "integrity" "sha1-eGQcSIuObKkadfUR56OzKobl3aA="
   "resolved" "https://registry.npm.taobao.org/vm-browserify/download/vm-browserify-1.1.2.tgz"
   "version" "1.1.2"
+
+"vue-apexcharts@^1.6.1":
+  "integrity" "sha512-ILn3/55IvZQUgsc7+jKDjPfHfGUlcUQi/lDrLjRe5g7gfjj99o8otXoHwMeib3CBHYdQXNG9foe1vzv7RdUzXA=="
+  "resolved" "https://registry.npmjs.org/vue-apexcharts/-/vue-apexcharts-1.6.1.tgz"
+  "version" "1.6.1"
 
 "vue-cli-plugin-vuetify@^2.4.1":
   "integrity" "sha1-oxqd2ydMjlEq7KfcLynYKKGN8K8="
@@ -9328,7 +9400,7 @@
     "hash-sum" "^1.0.2"
     "loader-utils" "^1.0.2"
 
-"vue-template-compiler@^2.6.11":
+"vue-template-compiler@^2.0.0", "vue-template-compiler@^2.6.10", "vue-template-compiler@^2.6.11":
   "integrity" "sha1-ovDn2YVnDULJye4NBE/tdpD092M="
   "resolved" "https://registry.nlark.com/vue-template-compiler/download/vue-template-compiler-2.6.14.tgz?cache=0&sync_timestamp=1623059640396&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvue-template-compiler%2Fdownload%2Fvue-template-compiler-2.6.14.tgz"
   "version" "2.6.14"
@@ -9341,7 +9413,7 @@
   "resolved" "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz"
   "version" "1.9.1"
 
-"vue@^2.6.11":
+"vue@^2 || ^3.0.0-0", "vue@^2.6.11", "vue@^2.6.4":
   "integrity" "sha1-5RqlJQJQ1Wmj+606ilpofWA24jU="
   "resolved" "https://registry.nlark.com/vue/download/vue-2.6.14.tgz"
   "version" "2.6.14"
@@ -9360,7 +9432,7 @@
     "file-loader" "^6.2.0"
     "loader-utils" "^2.0.0"
 
-"vuetify@^2.4.0":
+"vuetify@^1.3.0 || ^2.0.0", "vuetify@^2.4.0":
   "integrity" "sha1-nXA0FKc2h5ZzyUVQA1rcF3pso5Q="
   "resolved" "https://registry.nlark.com/vuetify/download/vuetify-2.5.3.tgz"
   "version" "2.5.3"
@@ -9497,7 +9569,7 @@
     "source-list-map" "^2.0.0"
     "source-map" "~0.6.1"
 
-"webpack@^4.0.0":
+"webpack@^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0", "webpack@^2.0.0 || ^3.0.0 || ^4.0.0", "webpack@^3.0.0 || ^4.1.0 || ^5.0.0-0", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.3.0", "webpack@^4.36.0 || ^5.0.0", "webpack@^4.4.0", "webpack@>=2", "webpack@>=2.0.0 <5.0.0", "webpack@>=4.0.0":
   "integrity" "sha1-v5tEBOogoHNgXgoBHRiNd8tq1UI="
   "resolved" "https://registry.nlark.com/webpack/download/webpack-4.46.0.tgz?cache=0&sync_timestamp=1622150278226&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fwebpack%2Fdownload%2Fwebpack-4.46.0.tgz"
   "version" "4.46.0"
